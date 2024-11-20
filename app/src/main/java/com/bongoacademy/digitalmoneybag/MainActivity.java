@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//for short cut method
-//for short cut method
         UpdateUi();
 
 
