@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     Databasehelper dbhelper;
 
+
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+//for short cut method
         UpdateUi();
 
 
