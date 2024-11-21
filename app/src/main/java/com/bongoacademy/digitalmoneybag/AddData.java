@@ -20,6 +20,7 @@ public class AddData extends AppCompatActivity {
     EditText addAmount,addReason;
     Button insertButton;
 
+    public static boolean EXPENSE = true;
     Databasehelper dbhelper;
 
     @SuppressLint("MissingInflatedId")
@@ -37,6 +38,11 @@ public class AddData extends AppCompatActivity {
 
 
 
+        if (EXPENSE==true){
+            title.setText("Add Expense");
+        }else {
+            title.setText("Add Income");
+        }
 
 
         insertButton.setOnClickListener(new View.OnClickListener() {
@@ -49,10 +55,18 @@ public class AddData extends AppCompatActivity {
 
                 double amount = Double.parseDouble(edAmount);
 
-                dbhelper.addexpense(amount, edReason);
 
-                Toast.makeText(AddData.this, "Data inserted", Toast.LENGTH_SHORT).show();
-                title.setText("Data Inserted!!");
+                if (EXPENSE==true){
+                    dbhelper.addexpense(amount, edReason);
+                    title.setText("Expense Added");
+                }else {
+                    dbhelper.addincome(amount, edReason);
+                    title.setText("Income Added");
+                }
+
+
+
+
 
             }
         });

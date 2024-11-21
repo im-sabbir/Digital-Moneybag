@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    android:background="#E9E4E4"
+    android:layout_marginTop="10dp"
+    >
+
+
+    <TextView
+        android:id="@+id/reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reason"
+        android:textSize="22sp"
+        android:padding="5dp"
+        />
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00.00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Time: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        android:textSize="22sp"
+    android:layout_margin="10dp"
+        android:background="#EBA89B"
+        android:gravity="center_horizontal"
+    android:padding="5dp"
+       />
+
+
+
+
+</LinearLayout>
