@@ -53,7 +53,15 @@ public class MainActivity extends AppCompatActivity {
         allexpenselist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddData.EXPENSE=false;
+                ShowDataList.EXPENSE=true;
+                startActivity(new Intent(MainActivity.this, ShowDataList.class));
+            }
+        });
+
+        allIncomelist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowDataList.EXPENSE=false;
                 startActivity(new Intent(MainActivity.this, ShowDataList.class));
             }
         });

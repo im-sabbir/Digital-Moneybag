@@ -118,5 +118,27 @@ public class Databasehelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+
+    public Cursor getallIncomeData(){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from income",null);
+
+        return cursor;
+    }
+
+
+    public void deleteExpenseList(String id){
+
+        SQLiteDatabase db =this.getWritableDatabase();
+        db.execSQL(" delete from expense where id like "+id);
+    }
+
+    public void deleteIncomeList(String id){
+
+        SQLiteDatabase db =this.getWritableDatabase();
+        db.execSQL(" delete from income where id like "+id);
+    }
     
 }

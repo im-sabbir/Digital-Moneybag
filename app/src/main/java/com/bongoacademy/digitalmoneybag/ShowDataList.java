@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class ShowDataList extends AppCompatActivity {
     ListView listview;
     Databasehelper databasehelper;
 
+    public static boolean EXPENSE = true;
     ArrayList<HashMap<String, String>> arrayList;
     HashMap<String,String> hashMap;
 
@@ -38,9 +40,31 @@ public class ShowDataList extends AppCompatActivity {
         listview = findViewById(R.id.listview);
         databasehelper = new Databasehelper(this);
 
-        Cursor cursor = databasehelper.getallExpenseData();
 
-        if (cursor!=null && cursor.getCount()>0){
+        if (EXPENSE==true){
+            title.setText("All Expense List");
+        }else {
+            title.setText("All Income List");
+        }
+
+
+loadDataList();
+
+
+
+    }
+
+    public void loadDataList(){
+
+        Cursor cursor;
+        if (EXPENSE==true){
+            cursor = databasehelper.getallExpenseData();
+        }else {
+            cursor = databasehelper.getallIncomeData();
+        }
+
+
+        if (cursor!=null && cursor.getCount()>=0){
 
             arrayList = new ArrayList<>();
 
@@ -66,11 +90,9 @@ public class ShowDataList extends AppCompatActivity {
             title.setText("No data found");
         }
 
-
-
-
-
     }
+
+
 
 
     public class MyAdapter extends BaseAdapter{
@@ -94,6 +116,7 @@ public class ShowDataList extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = getLayoutInflater();
+            @SuppressLint("ViewHolder")
             View myview = inflater.inflate(R.layout.list_item, parent,false);
 
             TextView tvreason = myview.findViewById(R.id.reason);
@@ -111,6 +134,24 @@ public class ShowDataList extends AppCompatActivity {
             tvamount.setText(amount);
             tvreason.setText(reason);
             tvdate.append("\n"+time);
+
+
+            tvdelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (EXPENSE == true) {
+                        databasehelper.deleteExpenseList(id);
+                    }else {
+                        databasehelper.deleteIncomeList(id);
+                    }
+
+                    Toast.makeText(ShowDataList.this, "Deleted", Toast.LENGTH_SHORT).show();
+
+                    loadDataList();
+
+                }
+            });
 
             return myview;
 
